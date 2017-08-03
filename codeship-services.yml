@@ -10,10 +10,21 @@ services:
         ports:
             - 8080:8080
     freddydemo-mysql:
-        extends:
-            file: mysql.yml
-            service: freddydemo-mysql
+        image: mysql:5.7.18
+        # volumes:
+        #     - ~/volumes/jhipster/freddydemo/mysql/:/var/lib/mysql/
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=freddydemo
+        ports:
+            - 3306:3306
+        command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8 --explicit_defaults_for_timestamp
+
     freddydemo-elasticsearch:
-        extends:
-            file: elasticsearch.yml
-            service: freddydemo-elasticsearch
+        image: elasticsearch:2.4.1
+        # volumes:
+        #     - ~/volumes/jhipster/freddydemo/elasticsearch/:/usr/share/elasticsearch/data/
+        ports:
+            - 9200:9200
+            - 9300:9300
