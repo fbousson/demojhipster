@@ -13,7 +13,7 @@ services:
         extends:
             file: mysql.yml
             service: freddydemo-mysql
-  #  freddydemo-elasticsearch:
-  #      extends:
-  #          file: elasticsearch.yml
-  #          service: freddydemo-elasticsearch
+    freddydemo-elasticsearch:
+        extends:
+            file: elasticsearch.yml
+            service: freddydemo-elasticsearch
